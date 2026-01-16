@@ -202,6 +202,56 @@ body.dark .lockBox{
   color:#eee;
 }
 body.dark #dayCounterBox{background:#222;color:#ffd76a}
+
+/* ====== ขยายซองจดหมาย ====== */
+.envelope{
+  width: 360px;     /* เดิม 280px */
+  height: 240px;    /* เดิม 180px */
+}
+
+/* ปรับสามเหลี่ยมซองให้สมส่วน */
+.envelope:before{
+  border-left:180px solid #ffe9a8;
+  border-right:180px solid #ffd76a;
+  border-top:120px solid transparent;
+  border-bottom:120px solid #ffe28f;
+}
+
+/* ====== ขยายกระดาษจดหมาย ====== */
+.letterPaper{
+  height: 200px;          /* เดิม 150px */
+  font-size: 1.05rem;    /* ตัวหนังสือใหญ่ขึ้น */
+  line-height: 1.9;      /* อ่านสบาย */
+  padding: 22px;
+}
+
+/* ตอนเปิดให้ดันขึ้นสูงขึ้นนิดนึง */
+.envelope.open .letterPaper{
+  transform: translateY(-40px);
+}
+
+/* ====== เปิดซองช้าลง นุ่มขึ้น ====== */
+.flap{
+  transition: transform 1.2s cubic-bezier(.22,1.2,.36,1);
+}
+
+/* ====== กระดาษจดหมาย นุ่ม + เด้งเบา ====== */
+.letterPaper{
+  transition: transform 1.3s cubic-bezier(.25,1.35,.4,1);
+}
+
+/* animation เด้งเบา ๆ */
+@keyframes softBounce{
+  0%   { transform: translateY(100%); }
+  60%  { transform: translateY(-50px); }
+  80%  { transform: translateY(-36px); }
+  100% { transform: translateY(-40px); }
+}
+
+/* ตอนเปิดซอง */
+.envelope.open .letterPaper{
+  animation: softBounce 1.4s cubic-bezier(.25,1.2,.35,1) forwards;
+}
   
 </style>
 </head>
@@ -284,10 +334,6 @@ body.dark #dayCounterBox{background:#222;color:#ffd76a}
     <p> วันที่30 พฤษภาคม ปี69 จะ21เเล้วนะ โตขึ้นอีกปีเเล้ว 🥳</p>
   </div>
 </section>
-
-<div id="dayCounterBox">
-  💖 เราคบกันมาแล้ว <span id="dayCount"></span> วัน 💖
-</div>
   
 <section>
 <h2>💌 Love Letter</h2>

@@ -1,326 +1,203 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Happy Anniversary 💛</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Anniversary 🤍</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Itim&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --gold:#f2c94c;
-  --soft:#fff7db;
-  --bg:#fffdf3;
+  --gold:#f5c66a;
+  --bg1:#fffbe8;
+  --bg2:#fff3c4;
 }
+
 body{
   margin:0;
   font-family:'Itim', cursive;
-  background:linear-gradient(180deg,#fff7db,#fffdf3);
+  background:linear-gradient(180deg,var(--bg1),var(--bg2));
   color:#333;
-  line-height:1.8;
+  overflow-x:hidden;
 }
 
-/* ===== LOCK ===== */
+/* ⭐ GLITTER */
+#glitter{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:1;
+}
+.star{
+  position:absolute;
+  color:#ffd76a;
+  font-size:14px;
+  animation:fall linear infinite, spin linear infinite;
+  opacity:.85;
+}
+@keyframes fall{
+  from{transform:translateY(-10vh);}
+  to{transform:translateY(110vh);}
+}
+@keyframes spin{
+  from{rotate:0deg;}
+  to{rotate:360deg;}
+}
+
+/* 🔊 MUSIC */
+#musicBtn{
+  position:fixed;
+  top:16px;right:16px;
+  width:52px;height:52px;
+  border-radius:50%;
+  border:none;
+  background:var(--gold);
+  color:#fff;
+  font-size:1.3rem;
+  cursor:pointer;
+  z-index:999;
+}
+
+/* 🔐 LOCK */
 #lockScreen{
-  position:fixed; inset:0;
-  background:linear-gradient(135deg,#fff1b8,#fffde8);
+  position:fixed;inset:0;
+  background:linear-gradient(135deg,#fff7cc,#ffe58f);
   display:flex;align-items:center;justify-content:center;
   z-index:9999;
 }
 .lockBox{
-  background:#fff;
-  padding:36px;
-  border-radius:28px;
+  background:#fff;padding:34px;border-radius:26px;
   text-align:center;
-  box-shadow:0 20px 60px rgba(242,201,76,.35);
-  max-width:340px;width:90%;
+  box-shadow:0 18px 50px rgba(0,0,0,.2);
 }
-.lockBox h2{
-  font-family:'Playfair Display', serif;
-  color:#d4a400;
-}
-.passInputs{
-  display:flex;justify-content:center;gap:14px;margin:22px 0;
-}
+.passInputs{display:flex;gap:14px;justify-content:center;margin:18px 0;}
 .passInputs input{
   width:56px;height:56px;font-size:2rem;text-align:center;
-  border-radius:16px;border:1px solid #f3d36b;
-  background:#fff7db;color:transparent;
-  text-shadow:0 0 0 #d4a400;caret-color:transparent;
-}
-.lockBox button{
-  background:#f2c94c;color:#fff;border:none;
-  padding:9px 26px;border-radius:999px;cursor:pointer;
-}
-.shake{animation:shake .35s;}
-@keyframes shake{
-  0%{transform:translateX(0)}
-  25%{transform:translateX(-6px)}
-  50%{transform:translateX(6px)}
-  75%{transform:translateX(-6px)}
-  100%{transform:translateX(0)}
+  border-radius:16px;border:1px solid #f5c66a;
+  background:#fffbe8;color:transparent;
+  text-shadow:0 0 0 #d8a536;
 }
 
-/* ===== CONTENT ===== */
-section{padding:70px 24px;max-width:900px;margin:auto}
-.hero{text-align:center;padding-top:100px}
-.hero h1{font-family:'Playfair Display',serif;font-size:2.4rem}
+section{padding:80px 24px;max-width:900px;margin:auto;position:relative;z-index:2}
+.hero{text-align:center}
+.hero h1{font-family:'Playfair Display',serif;color:#d8a536}
 
-.video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
-.video-card{background:#fff;padding:14px;border-radius:22px;box-shadow:0 16px 40px rgba(242,201,76,.25);opacity:0;transform:translateY(30px);transition:1s}
-.video-card.show{opacity:1;transform:none}
+.video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:26px}
+.video-card{background:#fff;padding:14px;border-radius:24px;box-shadow:0 18px 40px rgba(0,0,0,.12)}
+.video-card video{width:100%;border-radius:16px}
 
-.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px}
-.gallery img{width:100%;border-radius:18px;box-shadow:0 10px 28px rgba(0,0,0,.12)}
+.timeline div{border-left:4px solid #f5c66a;padding-left:16px;margin:16px 0}
 
-.letter{background:#fff;padding:32px;border-radius:26px;box-shadow:0 16px 40px rgba(242,201,76,.25)}
-
-.timeline{
-  background:#fff;
-  padding:34px;
-  border-radius:26px;
-  box-shadow:0 16px 40px rgba(242,201,76,.25);
-}
-.timeline-item{
-  border-left:3px solid var(--gold);
-  padding-left:16px;
-  margin:16px 0;
-}
-.timeline-item small{color:#888;display:block;margin-top:4px}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:16px}
+.gallery img{width:100%;border-radius:18px;box-shadow:0 12px 30px rgba(0,0,0,.15)}
 
 .coupons{text-align:center}
 .coupon{
-  position:relative;
-  background:#fff;
-  border:2px dashed #f2c94c;
-  border-radius:26px;
-  padding:26px;
-  margin:18px auto;
+  background:#fff;border:2px dashed #f5c66a;
+  border-radius:26px;padding:26px;margin:20px auto;
   max-width:340px;
-  box-shadow:0 12px 30px rgba(0,0,0,.08);
-  cursor:pointer;
-}
-.coupon.used{opacity:.45}
-.btn{
-  margin-top:10px;
-  display:inline-block;
-  background:#f2c94c;
-  color:#fff;
-  padding:8px 20px;
-  border-radius:999px;
-  font-size:.85rem;
 }
 
-.coupon.pop{animation:pop .35s ease;}
-@keyframes pop{
-  0%{transform:scale(1)}
-  50%{transform:scale(1.08)}
-  100%{transform:scale(1)}
-}
-.heart-fx{
-  position:absolute;
-  font-size:1.3rem;
-  color:#f2c94c;
-  animation:heartUp .9s ease forwards;
-}
-@keyframes heartUp{
-  from{transform:translateY(0) scale(.8);opacity:1}
-  to{transform:translateY(-50px) scale(1.2);opacity:0}
-}
-
-/* ===== SUMMARY ===== */
-.summary-box{
-  background:#fff;
-  padding:26px;
-  border-radius:26px;
-  text-align:center;
-  box-shadow:0 16px 40px rgba(242,201,76,.25);
-}
-.summary-box h2{
-  font-family:'Playfair Display', serif;
-}
-.summary-num{
-  font-size:2.2rem;
-  color:#d4a400;
-  margin-top:10px;
-}
-
-footer{text-align:center;color:#aaa;padding-bottom:60px}
+footer{text-align:center;color:#aaa;padding-bottom:60px;z-index:2;position:relative}
 </style>
 </head>
 
 <body>
 
-<!-- 🔐 LOCK -->
+<div id="glitter"></div>
+
+<audio id="bgMusic" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<button id="musicBtn">🔊</button>
+
 <div id="lockScreen">
   <div class="lockBox" id="lockBox">
-    <h2>💛 ใส่รหัสวันครบรอบ</h2>
-    <p>ของพี่ดรีม & น้องข้าว</p>
+    <h2>🤍 ใส่รหัสวันครบรอบ</h2>
     <div class="passInputs">
-      <input type="password" maxlength="1">
-      <input type="password" maxlength="1">
-      <input type="password" maxlength="1">
-      <input type="password" maxlength="1">
+      <input maxlength="1"><input maxlength="1"><input maxlength="1"><input maxlength="1">
     </div>
-    <button onclick="checkPass()">เข้าเว็บ 💫</button>
+    <button onclick="checkPass()">เข้าเว็บ 🤍</button>
   </div>
 </div>
 
 <section class="hero">
-  <h1>🐈 ครบรอบของพี่ดรีม & น้องข้าว 🐈</h1>
-  <p>ไปด้วยกันนาน ๆ นะ 💛</p>
+  <h1>ครบรอบของเรา 🤍</h1>
+  <p>ไปด้วยกันนาน ๆ นะ</p>
 </section>
 
 <section>
 <h2>🎬 Our Moments</h2>
 <div class="video-grid">
-  <div class="video-card">
-    <video controls width="100%"><source src="1.mp4" type="video/mp4"></video>
-    <p>💫 คลิปแรกของเราด้วยกัน</p>
-  </div>
-  <div class="video-card">
-    <video controls width="100%"><source src="2.mp4" type="video/mp4"></video>
-    <p>☕ เดทเล็ก ๆ แต่ความทรงจำใหญ่</p>
-  </div>
+  <div class="video-card"><video controls src="1.mp4"></video></div>
+  <div class="video-card"><video controls src="2.mp4"></video></div>
 </div>
 </section>
 
-<section>
-<h2>📖 Our Story</h2>
-<div class="timeline">
-  <div class="timeline-item">
-    💬 วันที่เราเริ่มคุยกัน
-    <small>จากคนแปลกหน้า → กลายเป็นคนสำคัญของกันและกัน</small>
-  </div>
-  <div class="timeline-item">
-    ☕ เดทแรกของเรา
-    <small>ตื่นเต้น เขิน ๆ แต่มีความสุขมาก</small>
-  </div>
-  <div class="timeline-item">
-    📸 ความทรงจำแรก ๆ ด้วยกัน
-    <small>ทุกภาพมีรอยยิ้มของเธออยู่เสมอ</small>
-  </div>
-  <div class="timeline-item">
-    🤍 วันนี้ – Anniversary
-    <small>และอยากมีพรุ่งนี้กับเธออีกนาน ๆ</small>
-  </div>
-</div>
+<section class="timeline">
+<h2>Our Story</h2>
+<div>💫 วันที่เราเริ่มคุยกัน</div>
+<div>☕ เดทแรก</div>
+<div>📸 ความทรงจำ</div>
+<div>🤍 Anniversary</div>
 </section>
 
 <section>
 <h2>Memories</h2>
 <div class="gallery">
-  <img src="1.jpg"><img src="2.jpg"><img src="3.jpg"><img src="4.jpg">
-</div>
-</section>
-
-<section>
-<h2>Letter</h2>
-<div class="letter">
-  ขอบคุณที่อยู่ด้วยกันในทุกวันธรรมดา<br>
-  ขอบคุณที่ทำให้เรื่องเล็ก ๆ มีความหมาย<br>
-  และหวังว่าเราจะยังเลือกกันแบบนี้ต่อไป 💛
+<img src="1.jpg"><img src="2.jpg"><img src="3.jpg"><img src="4.jpg">
 </div>
 </section>
 
 <section class="coupons">
 <h2>🎟 Love Coupons</h2>
-
-<div class="coupon"><h3>🤍 คูปองโอ๋</h3><p>โอ๋ได้ทันที</p><span class="btn">ใช้คูปอง</span></div>
-<div class="coupon"><h3>🍜 คูปองเลี้ยงข้าว</h3><p>มื้อไหนก็ได้</p><span class="btn">ใช้คูปอง</span></div>
-<div class="coupon"><h3>🎬 คูปองดูหนัง</h3><p>ตามใจเธอ</p><span class="btn">ใช้คูปอง</span></div>
-<div class="coupon"><h3>🫂 คูปองกอด</h3><p>กอดยาว 5 นาที</p><span class="btn">ใช้คูปอง</span></div>
-<div class="coupon"><h3>😴 คูปองง้อ</h3><p>ใช้ตอนงอน</p><span class="btn">ใช้คูปอง</span></div>
-<div class="coupon"><h3>✈️ คูปองทริปเล็ก ๆ</h3><p>ไปด้วยกัน</p><span class="btn">ใช้คูปอง</span></div>
-
+<div class="coupon">🤍 คูปองโอ๋</div>
+<div class="coupon">🍜 คูปองเลี้ยงข้าว</div>
+<div class="coupon">🎬 คูปองดูหนัง</div>
+<div class="coupon">🫂 คูปองกอด</div>
 </section>
 
-<!-- ===== SUMMARY ===== -->
-<section>
-<div class="summary-box">
-  <h2>📊 สรุปคูปอง</h2>
-  <p class="summary-num">
-    ใช้ไปแล้ว <span id="usedCount">0</span> / <span id="totalCount">0</span> ใบ
-  </p>
-</div>
-</section>
-
-<footer>Always us 💛</footer>
+<footer>Always us 🤍</footer>
 
 <script>
-/* ===== LOCK ===== */
+/* 🎵 MUSIC */
+const bgMusic=document.getElementById("bgMusic");
+const musicBtn=document.getElementById("musicBtn");
+let playing=true;
+musicBtn.onclick=()=>{
+  if(playing){bgMusic.pause();musicBtn.textContent="🔇";}
+  else{bgMusic.play();musicBtn.textContent="🔊";}
+  playing=!playing;
+};
+
+/* 🔐 LOCK */
 const correctPass="0312";
 const inputs=document.querySelectorAll(".passInputs input");
-inputs.forEach((input,i)=>{
-  input.addEventListener("input",()=>{if(input.value&&i<3)inputs[i+1].focus();});
-  input.addEventListener("keydown",e=>{
-    if(e.key==="Backspace"&&!input.value&&i>0)inputs[i-1].focus();
-    if(e.key==="Enter")checkPass();
-  });
-});
 function checkPass(){
   let v="";inputs.forEach(i=>v+=i.value);
   if(v===correctPass){
+    bgMusic.play();
     lockScreen.style.display="none";
-  }else{
-    lockBox.classList.add("shake");
-    setTimeout(()=>lockBox.classList.remove("shake"),400);
-    inputs.forEach(i=>i.value="");inputs[0].focus();
   }
 }
 
-/* ===== COUPONS + SUMMARY ===== */
-const coupons=document.querySelectorAll(".coupon");
-const usedEl=document.getElementById("usedCount");
-const totalEl=document.getElementById("totalCount");
-
-totalEl.textContent=coupons.length;
-
-function updateSummary(){
-  let used=0;
-  coupons.forEach((c,i)=>{
-    if(localStorage.getItem("coupon_"+i)==="used") used++;
-  });
-  usedEl.textContent=used;
+/* ⭐ GLITTER GENERATOR */
+const glitter=document.getElementById("glitter");
+function createStar(){
+  const s=document.createElement("div");
+  s.className="star";
+  s.textContent=Math.random()>0.5?"✨":"⭐";
+  s.style.left=Math.random()*100+"vw";
+  s.style.fontSize=10+Math.random()*16+"px";
+  s.style.animationDuration=(4+Math.random()*6)+"s";
+  s.style.opacity=Math.random();
+  glitter.appendChild(s);
+  setTimeout(()=>s.remove(),10000);
 }
-
-coupons.forEach((coupon,i)=>{
-  const saved=localStorage.getItem("coupon_"+i);
-  if(saved==="used"){
-    coupon.classList.add("used");
-    coupon.querySelector(".btn").innerText="ใช้แล้ว 🤍";
-  }
-  coupon.addEventListener("click",()=>{
-    if(!coupon.classList.contains("used")){
-      coupon.classList.add("used");
-      coupon.querySelector(".btn").innerText="ใช้แล้ว 🤍";
-      localStorage.setItem("coupon_"+i,"used");
-
-      coupon.classList.add("pop");
-      setTimeout(()=>coupon.classList.remove("pop"),350);
-
-      for(let j=0;j<4;j++){
-        const h=document.createElement("span");
-        h.className="heart-fx";
-        h.textContent="❤";
-        h.style.left=(20+Math.random()*60)+"%";
-        h.style.bottom="20px";
-        coupon.appendChild(h);
-        setTimeout(()=>h.remove(),900);
-      }
-      updateSummary();
-    }
-  });
-});
-updateSummary();
-
-/* ===== VIDEO FADE ===== */
-const cards=document.querySelectorAll(".video-card");
-const obs=new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add("show")),{threshold:.3});
-cards.forEach(c=>obs.observe(c));
+setInterval(createStar,200);
 </script>
 
 </body>

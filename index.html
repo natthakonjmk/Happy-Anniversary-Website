@@ -481,9 +481,8 @@ const style=document.createElement("style");
 style.innerHTML=`@keyframes flyUp{from{transform:translateY(0);opacity:1}to{transform:translateY(-120vh);opacity:0}}`;
 document.head.appendChild(style);
 
-<script>
 // 💖 นับวันคบกัน
-const startDate = new Date("2025-10-20"); // วันที่เริ่มคุยกัน (แก้ได้)
+const startDate = new Date("2025-10-20");
 const today = new Date();
 const diffTime = today - startDate;
 const diffDays = Math.floor(diffTime / (1000*60*60*24));
@@ -493,9 +492,10 @@ document.getElementById("dayCount").textContent = diffDays;
 const darkBtn = document.getElementById("darkToggle");
 darkBtn.onclick = ()=>{
   document.body.classList.toggle("dark");
-  darkBtn.textContent = document.body.classList.contains("dark") ? "☀️ โหมดสว่าง" : "🌙 โหมดกลางคืน";
+  darkBtn.textContent = document.body.classList.contains("dark") 
+    ? "☀️ โหมดสว่าง" 
+    : "🌙 โหมดกลางคืน";
 };
 </script>
-
 </body>
 </html>

@@ -14,7 +14,6 @@
   --bg1:#fffbe8;
   --bg2:#fff3c4;
 }
-
 body{
   margin:0;
   font-family:'Itim', cursive;
@@ -24,65 +23,86 @@ body{
 }
 
 /* ⭐ GLITTER */
-#glitter{
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:1;
-}
+#glitter{position:fixed;inset:0;pointer-events:none;z-index:1}
 .star{
-  position:absolute;
-  color:#ffd76a;
-  font-size:14px;
+  position:absolute;color:#ffd76a;font-size:14px;
   animation:fall linear infinite, spin linear infinite;
-  opacity:.85;
+  opacity:.85
 }
 @keyframes fall{
-  from{transform:translateY(-10vh);}
-  to{transform:translateY(110vh);}
+  from{transform:translateY(-10vh)}
+  to{transform:translateY(110vh)}
 }
 @keyframes spin{
-  from{rotate:0deg;}
-  to{rotate:360deg;}
+  from{rotate:0deg}
+  to{rotate:360deg}
 }
 
 /* 🔊 MUSIC */
 #musicBtn{
-  position:fixed;
-  top:16px;right:16px;
-  width:52px;height:52px;
-  border-radius:50%;
-  border:none;
-  background:var(--gold);
-  color:#fff;
-  font-size:1.3rem;
-  cursor:pointer;
-  z-index:999;
+  position:fixed;top:16px;right:16px;width:52px;height:52px;
+  border-radius:50%;border:none;background:var(--gold);
+  color:#fff;font-size:1.3rem;cursor:pointer;z-index:999
 }
 
 /* 🔐 LOCK */
 #lockScreen{
-  position:fixed;inset:0;
-  background:linear-gradient(135deg,#fff7cc,#ffe58f);
-  display:flex;align-items:center;justify-content:center;
-  z-index:9999;
+  position:fixed;inset:0;background:linear-gradient(135deg,#fff7cc,#ffe58f);
+  display:flex;align-items:center;justify-content:center;z-index:9999
 }
 .lockBox{
-  background:#fff;padding:34px;border-radius:26px;
-  text-align:center;
-  box-shadow:0 18px 50px rgba(0,0,0,.2);
+  background:#fff;padding:34px;border-radius:26px;text-align:center;
+  box-shadow:0 18px 50px rgba(0,0,0,.2)
 }
-.passInputs{display:flex;gap:14px;justify-content:center;margin:18px 0;}
+.passInputs{display:flex;gap:14px;justify-content:center;margin:18px 0}
 .passInputs input{
   width:56px;height:56px;font-size:2rem;text-align:center;
-  border-radius:16px;border:1px solid #f5c66a;
-  background:#fffbe8;color:transparent;
-  text-shadow:0 0 0 #d8a536;
+  border-radius:16px;border:1px solid #f5c66a;background:#fffbe8;
+  color:transparent;text-shadow:0 0 0 #d8a536;caret-color:transparent
 }
 
 section{padding:80px 24px;max-width:900px;margin:auto;position:relative;z-index:2}
 .hero{text-align:center}
 .hero h1{font-family:'Playfair Display',serif;color:#d8a536}
+
+/* 💌 ENVELOPE LETTER */
+.envelopeWrap{
+  display:flex;justify-content:center;
+}
+.envelope{
+  width:280px;height:180px;position:relative;
+  background:#fff;border-radius:12px;
+  box-shadow:0 20px 40px rgba(0,0,0,.15);
+  cursor:pointer;overflow:hidden;
+}
+.envelope:before{
+  content:"";position:absolute;inset:0;
+  border-left:140px solid #ffe9a8;
+  border-right:140px solid #ffd76a;
+  border-top:90px solid transparent;
+  border-bottom:90px solid #ffe28f;
+}
+.flap{
+  position:absolute;top:0;left:0;right:0;height:50%;
+  background:#ffd76a;
+  clip-path:polygon(0 0,100% 0,50% 100%);
+  transform-origin:top;
+  transition:.8s ease;
+  z-index:3;
+}
+.letterPaper{
+  position:absolute;bottom:0;left:10px;right:10px;
+  height:150px;background:#fff;
+  border-radius:10px;
+  padding:18px;
+  box-shadow:0 6px 18px rgba(0,0,0,.1);
+  transform:translateY(100%);
+  transition:1s ease;
+  z-index:2;
+  font-size:.95rem;line-height:1.7;
+}
+.envelope.open .flap{transform:rotateX(180deg)}
+.envelope.open .letterPaper{transform:translateY(-20px)}
 
 .video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:26px}
 .video-card{background:#fff;padding:14px;border-radius:24px;box-shadow:0 18px 40px rgba(0,0,0,.12)}
@@ -95,9 +115,14 @@ section{padding:80px 24px;max-width:900px;margin:auto;position:relative;z-index:
 
 .coupons{text-align:center}
 .coupon{
-  background:#fff;border:2px dashed #f5c66a;
-  border-radius:26px;padding:26px;margin:20px auto;
-  max-width:340px;
+  background:#fff;border:2px dashed #f5c66a;border-radius:26px;
+  padding:26px;margin:20px auto;max-width:340px;cursor:pointer
+}
+.coupon.used{opacity:.45}
+
+#couponSummary{
+  margin:20px auto;max-width:340px;background:#fffbe8;border-radius:20px;
+  padding:14px;border:1px solid #f5c66a
 }
 
 footer{text-align:center;color:#aaa;padding-bottom:60px;z-index:2;position:relative}
@@ -111,8 +136,7 @@ footer{text-align:center;color:#aaa;padding-bottom:60px;z-index:2;position:relat
 <audio id="bgMusic" loop>
   <source src="1.mp3" type="audio/mpeg">
 </audio>
-
-<button id="musicBtn">🔊</button>
+<button id="musicBtn">🔇</button>
 
 <div id="lockScreen">
   <div class="lockBox" id="lockBox">
@@ -140,9 +164,9 @@ footer{text-align:center;color:#aaa;padding-bottom:60px;z-index:2;position:relat
 <section class="timeline">
 <h2>Our Story</h2>
 <div>💫 วันที่เราเริ่มคุยกัน</div>
-<div>☕ เดทแรก</div>
-<div>📸 ความทรงจำ</div>
-<div>🤍 Anniversary</div>
+<div>☕ เดทแรกของเรา</div>
+<div>📸 ความทรงจำที่ไม่เคยลืม</div>
+<div>🤍 วันนี้ – Anniversary</div>
 </section>
 
 <section>
@@ -152,12 +176,35 @@ footer{text-align:center;color:#aaa;padding-bottom:60px;z-index:2;position:relat
 </div>
 </section>
 
+<!-- 💌 ENVELOPE LETTER -->
+<section>
+  <h2>💌 Love Letter (กดที่ซองเพื่อเปิด)</h2>
+  <div class="envelopeWrap">
+    <div class="envelope" id="envelope">
+      <div class="flap"></div>
+      <div class="letterPaper">
+        <p>ถึงคนเก่งของเรา 🤍</p>
+        <p>
+          ขอบคุณที่อยู่ข้างกันในทุกวัน  
+          ไม่ว่าจะวันดีหรือวันที่เหนื่อย  
+          เราจะจับมือกันไปแบบนี้เสมอ
+        </p>
+        <p>รักนะ 🤍</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="coupons">
 <h2>🎟 Love Coupons</h2>
-<div class="coupon">🤍 คูปองโอ๋</div>
-<div class="coupon">🍜 คูปองเลี้ยงข้าว</div>
-<div class="coupon">🎬 คูปองดูหนัง</div>
-<div class="coupon">🫂 คูปองกอด</div>
+<div id="couponSummary">ใช้คูปองไปแล้ว <b id="usedCount">0</b> ใบ</div>
+
+<div class="coupon"><h3>🤍 คูปองโอ๋</h3><p>โอ๋ได้ทันที</p><span class="btn">ใช้คูปอง</span></div>
+<div class="coupon"><h3>🍜 คูปองเลี้ยงข้าว</h3><p>มื้อไหนก็ได้</p><span class="btn">ใช้คูปอง</span></div>
+<div class="coupon"><h3>🎬 คูปองดูหนัง</h3><p>ตามใจเธอ</p><span class="btn">ใช้คูปอง</span></div>
+<div class="coupon"><h3>🫂 คูปองกอด</h3><p>กอดยาว 5 นาที</p><span class="btn">ใช้คูปอง</span></div>
+<div class="coupon"><h3>😴 คูปองง้อ</h3><p>ใช้ตอนงอน</p><span class="btn">ใช้คูปอง</span></div>
+<div class="coupon"><h3>✈️ คูปองทริปเล็ก ๆ</h3><p>ไปด้วยกัน</p><span class="btn">ใช้คูปอง</span></div>
 </section>
 
 <footer>Always us 🤍</footer>
@@ -166,25 +213,43 @@ footer{text-align:center;color:#aaa;padding-bottom:60px;z-index:2;position:relat
 /* 🎵 MUSIC */
 const bgMusic=document.getElementById("bgMusic");
 const musicBtn=document.getElementById("musicBtn");
-let playing=true;
+let playing=false;
 musicBtn.onclick=()=>{
-  if(playing){bgMusic.pause();musicBtn.textContent="🔇";}
-  else{bgMusic.play();musicBtn.textContent="🔊";}
+  if(!playing){bgMusic.play();musicBtn.textContent="🔊";}
+  else{bgMusic.pause();musicBtn.textContent="🔇";}
   playing=!playing;
 };
 
-/* 🔐 LOCK */
+/* 🔐 LOCK + AUTO FLOW */
 const correctPass="0312";
 const inputs=document.querySelectorAll(".passInputs input");
+inputs.forEach((inp,i)=>{
+  inp.addEventListener("input",()=>{if(inp.value&&i<3)inputs[i+1].focus()});
+});
 function checkPass(){
   let v="";inputs.forEach(i=>v+=i.value);
   if(v===correctPass){
-    bgMusic.play();
     lockScreen.style.display="none";
+    bgMusic.play();playing=true;musicBtn.textContent="🔊";
   }
 }
 
-/* ⭐ GLITTER GENERATOR */
+/* 🎟 COUPON SUMMARY */
+const coupons=document.querySelectorAll(".coupon");
+const usedCountEl=document.getElementById("usedCount");
+function updateSummary(){
+  const used=[...coupons].filter(c=>c.classList.contains("used")).length;
+  usedCountEl.textContent=used;
+}
+coupons.forEach(c=>{
+  c.onclick=()=>{c.classList.add("used");updateSummary();}
+});
+
+/* 💌 ENVELOPE OPEN */
+const envelope=document.getElementById("envelope");
+envelope.onclick=()=>envelope.classList.toggle("open");
+
+/* ⭐ GLITTER (ช้าลง นุ่ม ๆ) */
 const glitter=document.getElementById("glitter");
 function createStar(){
   const s=document.createElement("div");
@@ -192,12 +257,12 @@ function createStar(){
   s.textContent=Math.random()>0.5?"✨":"⭐";
   s.style.left=Math.random()*100+"vw";
   s.style.fontSize=10+Math.random()*16+"px";
-  s.style.animationDuration=(4+Math.random()*6)+"s";
+  s.style.animationDuration=(10+Math.random()*10)+"s"; /* ช้าลง */
   s.style.opacity=Math.random();
   glitter.appendChild(s);
-  setTimeout(()=>s.remove(),10000);
+  setTimeout(()=>s.remove(),20000);
 }
-setInterval(createStar,200);
+setInterval(createStar,500); /* ปล่อยดาวช้าลง */
 </script>
 
 </body>

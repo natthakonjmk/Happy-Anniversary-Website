@@ -104,7 +104,12 @@ box-shadow:0 20px 40px rgba(0,0,0,.15);cursor:pointer;overflow:hidden}
   0%{transform:translateY(0) scale(1);opacity:1}
   100%{transform:translateY(-80px) scale(1.6);opacity:0}
 }
-
+.coupon .expire{
+  display:block;
+  margin-top:6px;
+  font-size:0.8rem;
+  color:#999;
+}
 #couponSummary{margin:20px auto;max-width:340px;background:#fffbe8;border-radius:20px;padding:14px;border:1px solid #f5c66a}
 
 footer{text-align:center;color:#aaa;padding-bottom:60px;z-index:2;position:relative}
@@ -126,12 +131,12 @@ footer{text-align:center;color:#aaa;padding-bottom:60px;z-index:2;position:relat
     <div class="passInputs">
       <input maxlength="1"><input maxlength="1"><input maxlength="1"><input maxlength="1">
     </div>
-    <button onclick="checkPass()">เข้าเว็บ 🤍</button>
+    <button onclick="checkPass()">เข้ามาในหัวใจ ⭐️</button>
   </div>
 </div>
 
 <section class="hero">
-  <h1>ครบรอบของพี่ดรีม & น้องข้าว 🤍</h1>
+  <h1>ครบรอบ2เดือนของพี่ดรีม เเละน้องข้าว 💖</h1>
   <p>ไปด้วยกันนาน ๆ นะ</p>
 </section>
 
@@ -190,12 +195,47 @@ width="100%" height="80" frameborder="0" allow="autoplay; clipboard-write; encry
 <h2>🎟 Love Coupons</h2>
 <div id="couponSummary">ใช้คูปองไปแล้ว <b id="usedCount">0</b> ใบ</div>
 
-<div class="coupon"><h3>🤍 คูปองโอ๋</h3><p>โอ๋ได้ทันที</p><span class="btn">ใช้คูปอง</span></div>
-<div class="coupon"><h3>🍜 คูปองเลี้ยงข้าว</h3><p>มื้อไหนก็ได้</p><span class="btn">ใช้คูปอง</span></div>
-<div class="coupon"><h3>🎬 คูปองดูหนัง</h3><p>ตามใจเธอ</p><span class="btn">ใช้คูปอง</span></div>
-<div class="coupon"><h3>🫂 คูปองกอด</h3><p>กอดยาว 5 นาที</p><span class="btn">ใช้คูปอง</span></div>
-<div class="coupon"><h3>😴 คูปองง้อ</h3><p>ใช้ตอนงอน</p><span class="btn">ใช้คูปอง</span></div>
-<div class="coupon"><h3>✈️ คูปองทริปเล็ก ๆ</h3><p>ไปด้วยกัน</p><span class="btn">ใช้คูปอง</span></div>
+<div class="coupon">
+  <h3>🤍 คูปองโอ๋</h3>
+  <p>โอ๋ได้ทันที</p>
+  <small class="expire">หมดอายุ: 31/12/2026</small>
+  <span class="btn">ใช้คูปอง</span>
+</div>
+
+<div class="coupon">
+  <h3>🍜 คูปองเลี้ยงข้าว</h3>
+  <p>มื้อไหนก็ได้</p>
+  <small class="expire">หมดอายุ: 31/12/2026</small>
+  <span class="btn">ใช้คูปอง</span>
+</div>
+
+<div class="coupon">
+  <h3>🎬 คูปองดูหนัง</h3>
+  <p>ตามใจเธอ</p>
+  <small class="expire">หมดอายุ: 31/12/2026</small>
+  <span class="btn">ใช้คูปอง</span>
+</div>
+
+<div class="coupon">
+  <h3>🫂 คูปองกอด</h3>
+  <p>กอดยาว 5 นาที</p>
+  <small class="expire">หมดอายุ: 31/12/2026</small>
+  <span class="btn">ใช้คูปอง</span>
+</div>
+
+<div class="coupon">
+  <h3>😴 คูปองง้อ</h3>
+  <p>ใช้ตอนงอน</p>
+  <small class="expire">หมดอายุ: 31/12/2026</small>
+  <span class="btn">ใช้คูปอง</span>
+</div>
+
+<div class="coupon">
+  <h3>✈️ คูปองทริปเล็ก ๆ</h3>
+  <p>ไปด้วยกัน</p>
+  <small class="expire">หมดอายุ: 31/12/2026</small>
+  <span class="btn">ใช้คูปอง</span>
+</div>
 </section>
 
 <footer>Always us 🤍</footer>

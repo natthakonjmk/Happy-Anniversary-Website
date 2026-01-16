@@ -110,6 +110,58 @@ box-shadow:0 20px 40px rgba(0,0,0,.15);cursor:pointer;overflow:hidden}
   font-size:0.8rem;
   color:#999;
 }
+
+/* ====== ปุ่ม ใช้คูปอง + Animation ====== */
+@keyframes pulse{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.08)}
+  100%{transform:scale(1)}
+}
+
+@keyframes glow{
+  0%{box-shadow:0 0 6px rgba(216,165,54,.6)}
+  50%{box-shadow:0 0 14px rgba(216,165,54,1)}
+  100%{box-shadow:0 0 6px rgba(216,165,54,.6)}
+}
+
+@keyframes floatBtn{
+  0%{transform:translateY(0)}
+  50%{transform:translateY(-4px)}
+  100%{transform:translateY(0)}
+}
+
+.coupon .btn{
+  display:inline-block;
+  margin-top:14px;           /* เว้นจากวันหมดอายุ */
+  padding:8px 18px;
+  border:2px solid #d8a536;  /* ขอบเหลืองเข้ม */
+  border-radius:6px;
+  background:#ffd24d;       /* พื้นหลังเหลือง */
+  color:#6b4f00;
+  font-weight:bold;
+  cursor:pointer;
+  box-shadow:0 4px 10px rgba(0,0,0,.15);
+  transition:.2s;
+
+  /* Animation */
+  animation:
+    pulse 1.6s ease-in-out infinite,
+    glow 2s ease-in-out infinite,
+    floatBtn 2.2s ease-in-out infinite;
+}
+
+.coupon .btn:hover{
+  transform:scale(1.1);
+}
+
+/* ระยะห่างบรรทัดวันหมดอายุ */
+.coupon .expire{
+  display:block;
+  margin-top:6px;
+  font-size:0.8rem;
+  color:#999;
+}
+  
 #couponSummary{margin:20px auto;max-width:340px;background:#fffbe8;border-radius:20px;padding:14px;border:1px solid #f5c66a}
 
 footer{text-align:center;color:#aaa;padding-bottom:60px;z-index:2;position:relative}
@@ -154,13 +206,26 @@ footer{text-align:center;color:#aaa;padding-bottom:60px;z-index:2;position:relat
 </div>
 </section>
 
+
 <section class="timeline">
 <h2>Our Story</h2>
 <p>เรื่องราวของเราที่ค่อย ๆ เติบโตไปพร้อมกัน 🤍</p>
-<div>💫 วันที่เราเริ่มคุยกัน</div>
-<div>☕ เดทแรกของเรา</div>
-<div>📸 ความทรงจำที่ไม่เคยลืม</div>
-<div>🤍 วันนี้ – Anniversary</div>
+<div>
+  💫 วันที่เราเริ่มคุยกัน  
+  <p>วันแรกที่ทุกอย่างยังเขิน ๆ แต่เต็มไปด้วยความรู้สึกดี ๆ</p>
+</div>
+<div>
+  ☕ เดทแรกของเรา  
+  <p>กาแฟแก้วนึง กับหัวใจที่เริ่มเต้นแรงขึ้น</p>
+</div>
+<div>
+  📸 ความทรงจำที่ไม่เคยลืม  
+  <p>ทุกภาพคือรอยยิ้ม ทุกช่วงเวลาคือความหมาย</p>
+</div>
+<div>
+  🤍 วันนี้ – Anniversary  
+  <p>อีกหนึ่งก้าวของคำว่า “เรา”</p>
+</div>
 </section>
 
 <section>

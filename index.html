@@ -80,27 +80,9 @@ box-shadow:0 20px 40px rgba(0,0,0,.15);cursor:pointer;overflow:hidden}
   transform-origin:top;transition:.8s ease;z-index:3
 }
 .letterPaper{
-  position:absolute;
-  bottom:0;
-  left:12px;
-  right:12px;
-
-  height:240px;           /* ⬅ เพิ่มความสูง */
-  max-height:260px;
-
-  background:#fff;
-  border-radius:14px;
-  padding:20px 18px;
-
-  box-shadow:0 8px 22px rgba(0,0,0,.15);
-
-  transform:translateY(100%);
-  transition:1.3s cubic-bezier(.25,1.35,.4,1);
-
-  font-size:1rem;
-  line-height:1.8;
-
-  overflow-y:auto;        /* ⬅ เลื่อนอ่านได้ */
+  position:absolute;bottom:0;left:10px;right:10px;height:150px;background:#fff;
+  border-radius:10px;padding:18px;box-shadow:0 6px 18px rgba(0,0,0,.1);
+  transform:translateY(100%);transition:1s ease;z-index:2;font-size:.95rem;line-height:1.7
 }
 .envelope.open .flap{transform:rotateX(180deg)}
 .envelope.open .letterPaper{transform:translateY(-20px)}
@@ -223,8 +205,8 @@ body.dark #dayCounterBox{background:#222;color:#ffd76a}
 
 /* ====== ขยายซองจดหมาย ====== */
 .envelope{
-  width:320px;
-  height:220px;   /* ⬅ จากเดิม 180px */
+  width: 360px;     /* เดิม 280px */
+  height: 240px;    /* เดิม 180px */
 }
 
 /* ปรับสามเหลี่ยมซองให้สมส่วน */

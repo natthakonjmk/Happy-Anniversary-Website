@@ -372,56 +372,56 @@ width="100%" height="80" frameborder="0" allow="autoplay; clipboard-write; encry
 <h2>🎟 Love Coupons</h2>
 <div id="couponSummary">ใช้คูปองไปแล้ว <b id="usedCount">0</b> ใบ</div>
 
-<div class="coupon" data-id="c1">
+<div class="coupon">
   <h3>🥹 คูปองโอ๋ๆ</h3>
   <p>โอ๋ได้ทันที การันตียิ้มหวาน 🤩</p>
   <small class="expire">หมดอายุ: 30/5/2026</small>
   <span class="btn">ใช้คูปอง</span>
 </div>
 
-<div class="coupon" data-id="c2">
+<div class="coupon">
   <h3>🍜 คูปองอาหารหม่ำๆ</h3>
   <p>มื้อไหนก็ได้ บอกได้เลยได้ทุกมื้อ</p>
   <small class="expire">หมดอายุ: 30/5/2026</small>
   <span class="btn">ใช้คูปอง</span>
 </div>
 
-<div class="coupon" data-id="c3">
+<div class="coupon">
   <h3>🎬 คูปองดูหนังตามใจฉัน</h3>
   <p>อยากดูอะไรไม่ขัดใจ ตามใจสุดฤทธิ์ </p>
   <small class="expire">หมดอายุ: 30/5/2026</small>
   <span class="btn">ใช้คูปอง</span>
 </div>
 
-<div class="coupon" data-id="c4">
+<div class="coupon">
   <h3>🫂 คูปองกอด</h3>
   <p>กอดยาวๆ กี่นาทีตามใจคนใช้คูปองเล้ยยย!</p>
   <small class="expire">หมดอายุ: 30/5/2026</small>
   <span class="btn">ใช้คูปอง</span>
 </div>
 
-<div class="coupon" data-id="c5">
+<div class="coupon">
   <h3>😴 คูปองงดมู่ๆทุกกรณี</h3>
   <p>ใช้ตอนเเฟนจะมู่มู่ใส่</p>
   <small class="expire">หมดอายุ: 30/5/2026</small>
   <span class="btn">ใช้คูปอง</span>
 </div>
 
-<div class="coupon" data-id="c6">
+<div class="coupon">
   <h3>✈️ คูปองทริปเล็กๆ</h3>
   <p>เเค่บอกมาไปไหนไปกันคับจิ๋วๆ</p>
   <small class="expire">หมดอายุ: 30/5/2026</small>
   <span class="btn">ใช้คูปอง</span>
 </div>
 
-<div class="coupon" data-id="c7">
+<div class="coupon">
   <h3>🫶🏻 คูปองตามใจทุกอย่าง</h3>
   <p>ตามใจทั้งวานๆ</p>
   <small class="expire">หมดอายุ: 30/5/2026</small>
   <span class="btn">ใช้คูปอง</span>
 </div>
 
-<div class="coupon" data-id="c8">
+  <div class="coupon">
   <h3>💆🏻‍♀️ คูปองนวดทั้งร่างกายกรรมวิเศษ</h3>
   <p>นวดทั้งตัวเป็นเวลา 30นาที(เซฟข้อมือคนนวดด้วย5555)</p>
   <small class="expire">หมดอายุ: 30/5/2026</small>
@@ -433,20 +433,14 @@ width="100%" height="80" frameborder="0" allow="autoplay; clipboard-write; encry
 <footer>Always us 🤍</footer>
 
 <script>
-const bgMusic = document.getElementById("bgMusic");
-const musicBtn = document.getElementById("musicBtn");
-
-let playing = false; // เริ่มต้น = ยังไม่เล่น
-
-musicBtn.onclick = () => {
-  if (!playing) {
-    bgMusic.play();
-    musicBtn.textContent = "🔊";
-  } else {
-    bgMusic.pause();
-    musicBtn.textContent = "🔇";
-  }
-  playing = !playing;
+const lockScreen = document.getElementById("lockScreen");  
+const bgMusic=document.getElementById("bgMusic");
+const musicBtn=document.getElementById("musicBtn");
+let playing=false;
+musicBtn.onclick=()=>{
+  if(!playing){bgMusic.play();musicBtn.textContent="🔊";}
+  else{bgMusic.pause();musicBtn.textContent="🔇";}
+  playing=!playing;
 };
 
 const correctPass="0312";
@@ -455,29 +449,24 @@ inputs.forEach((inp,i)=>{
   inp.addEventListener("input",()=>{if(inp.value&&i<3)inputs[i+1].focus()});
 });
 function checkPass(){
-  let v = "";
-  inputs.forEach(i => v += i.value);
-
-  if(v === correctPass){
-    lockScreen.style.display = "none";
-    bgMusic.play();        // ▶️ เล่นเพลง
-    playing = true;
-    musicBtn.textContent = "🔊";
+  let v="";inputs.forEach(i=>v+=i.value);
+  if(v===correctPass){
+    lockScreen.style.display="none";
+    bgMusic.play();playing=true;musicBtn.textContent="🔊";
     unlockHearts(); // 💖 เอฟเฟกต์หัวใจ
   } else {
     alert("รหัสผิดนะตัวจิ๋วลองใหม่อีกทีคับผ้มม 💕");
   }
 }
-const coupons = document.querySelectorAll(".coupon");
-const usedCountEl = document.getElementById("usedCount");
-
-// โหลดจาก localStorage
-let usedCoupons = JSON.parse(localStorage.getItem("usedCoupons") || "[]");
+const coupons=document.querySelectorAll(".coupon");
+const usedCountEl=document.getElementById("usedCount");
 
 function updateSummary(){
-  usedCountEl.textContent = usedCoupons.length;
+  const used=[...coupons].filter(c=>c.classList.contains("used")).length;
+  usedCountEl.textContent=used;
 }
 
+// ❤️ สร้างหัวใจตอนใช้คูปอง
 function createHearts(el){
   for(let i=0;i<8;i++){
     const heart=document.createElement("div");
@@ -491,38 +480,16 @@ function createHearts(el){
   }
 }
 
-// ผูกปุ่มเฉพาะ .btn
 coupons.forEach(c=>{
-  const id = c.dataset.id;
-  const btn = c.querySelector(".btn");
-
-  // โหลดสถานะ
-  if(usedCoupons.includes(id)){
-    c.classList.add("used");
-    btn.textContent = "ใช้แล้ว";
-    btn.style.pointerEvents = "none";
-    btn.style.opacity = "0.6";
-  }
-
-  btn.onclick = (e)=>{
-    e.stopPropagation();
+  c.onclick=()=>{
     if(!c.classList.contains("used")){
       c.classList.add("used");
-      btn.textContent = "ใช้แล้ว";
-      btn.style.pointerEvents = "none";
-      btn.style.opacity = "0.6";
-
-      usedCoupons.push(id);
-      localStorage.setItem("usedCoupons", JSON.stringify(usedCoupons));
-
       createHearts(c);
       updateSummary();
     }
-  };
+  }
 });
 
-updateSummary();
-  
 const envelope = document.getElementById("envelope");
 envelope.onclick = () => envelope.classList.toggle("open");
 

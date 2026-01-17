@@ -372,56 +372,56 @@ width="100%" height="80" frameborder="0" allow="autoplay; clipboard-write; encry
 <h2>🎟 Love Coupons</h2>
 <div id="couponSummary">ใช้คูปองไปแล้ว <b id="usedCount">0</b> ใบ</div>
 
-<div class="coupon">
+<div class="coupon" data-id="c2">
   <h3>🥹 คูปองโอ๋ๆ</h3>
   <p>โอ๋ได้ทันที การันตียิ้มหวาน 🤩</p>
   <small class="expire">หมดอายุ: 30/5/2026</small>
   <span class="btn">ใช้คูปอง</span>
 </div>
 
-<div class="coupon">
+<div class="coupon" data-id="c2">
   <h3>🍜 คูปองอาหารหม่ำๆ</h3>
   <p>มื้อไหนก็ได้ บอกได้เลยได้ทุกมื้อ</p>
   <small class="expire">หมดอายุ: 30/5/2026</small>
   <span class="btn">ใช้คูปอง</span>
 </div>
 
-<div class="coupon">
+<div class="coupon" data-id="c3">
   <h3>🎬 คูปองดูหนังตามใจฉัน</h3>
   <p>อยากดูอะไรไม่ขัดใจ ตามใจสุดฤทธิ์ </p>
   <small class="expire">หมดอายุ: 30/5/2026</small>
   <span class="btn">ใช้คูปอง</span>
 </div>
 
-<div class="coupon">
+<div class="coupon" data-id="c4">
   <h3>🫂 คูปองกอด</h3>
   <p>กอดยาวๆ กี่นาทีตามใจคนใช้คูปองเล้ยยย!</p>
   <small class="expire">หมดอายุ: 30/5/2026</small>
   <span class="btn">ใช้คูปอง</span>
 </div>
 
-<div class="coupon">
+<div class="coupon" data-id="c5">
   <h3>😴 คูปองงดมู่ๆทุกกรณี</h3>
   <p>ใช้ตอนเเฟนจะมู่มู่ใส่</p>
   <small class="expire">หมดอายุ: 30/5/2026</small>
   <span class="btn">ใช้คูปอง</span>
 </div>
 
-<div class="coupon">
+<div class="coupon" data-id="c6">
   <h3>✈️ คูปองทริปเล็กๆ</h3>
   <p>เเค่บอกมาไปไหนไปกันคับจิ๋วๆ</p>
   <small class="expire">หมดอายุ: 30/5/2026</small>
   <span class="btn">ใช้คูปอง</span>
 </div>
 
-<div class="coupon">
+<div class="coupon" data-id="c7">
   <h3>🫶🏻 คูปองตามใจทุกอย่าง</h3>
   <p>ตามใจทั้งวานๆ</p>
   <small class="expire">หมดอายุ: 30/5/2026</small>
   <span class="btn">ใช้คูปอง</span>
 </div>
 
-  <div class="coupon">
+<div class="coupon" data-id="c8">
   <h3>💆🏻‍♀️ คูปองนวดทั้งร่างกายกรรมวิเศษ</h3>
   <p>นวดทั้งตัวเป็นเวลา 30นาที(เซฟข้อมือคนนวดด้วย5555)</p>
   <small class="expire">หมดอายุ: 30/5/2026</small>
@@ -458,12 +458,14 @@ function checkPass(){
     alert("รหัสผิดนะตัวจิ๋วลองใหม่อีกทีคับผ้มม 💕");
   }
 }
-const coupons=document.querySelectorAll(".coupon");
-const usedCountEl=document.getElementById("usedCount");
+const coupons = document.querySelectorAll(".coupon");
+const usedCountEl = document.getElementById("usedCount");
+
+// โหลดสถานะจาก localStorage
+let usedCoupons = JSON.parse(localStorage.getItem("usedCoupons") || "[]");
 
 function updateSummary(){
-  const used=[...coupons].filter(c=>c.classList.contains("used")).length;
-  usedCountEl.textContent=used;
+  usedCountEl.textContent = usedCoupons.length;
 }
 
 // ❤️ สร้างหัวใจตอนใช้คูปอง
@@ -480,16 +482,25 @@ function createHearts(el){
   }
 }
 
+// โหลดตอนเปิดหน้า
 coupons.forEach(c=>{
-  c.onclick=()=>{
+  const id = c.dataset.id;
+  if(usedCoupons.includes(id)){
+    c.classList.add("used");
+  }
+
+  c.onclick = ()=>{
     if(!c.classList.contains("used")){
       c.classList.add("used");
+      usedCoupons.push(id);
+      localStorage.setItem("usedCoupons", JSON.stringify(usedCoupons));
       createHearts(c);
       updateSummary();
     }
   }
 });
 
+updateSummary();
 const envelope = document.getElementById("envelope");
 envelope.onclick = () => envelope.classList.toggle("open");
 
